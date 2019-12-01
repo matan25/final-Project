@@ -13,16 +13,25 @@
                 <ColumnDefinition Width="55*"/>
                 <ColumnDefinition Width="374*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="tNumberID" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="61,14,0,0" Text="Number-Id:" FontFamily="Arial" TextChanged="TName_TextChanged" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="tPhone" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="65,122,0,0" FontFamily="Arial" Text="Phone:" Grid.ColumnSpan="3"/>
-            <TextBox x:Name="tGender" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="69,182,0,0" FontFamily="Arial" Text="Gender:" Grid.ColumnSpan="3"/>
-            <TextBox x:Name="tCity" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="71,257,0,0" FontFamily="Arial" Text="City:" Grid.ColumnSpan="3"/>
-            <TextBox x:Name="tStreet" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="204,13,0,0" FontFamily="Arial" Text="Street:" Grid.Column="2"/>
-            <TextBox x:Name="tNumberHouse" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="208,81,0,0" Text="number house:" FontFamily="Arial" Grid.Column="2"/>
-            <Button  x:Name="tButton" Content="submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="184" Margin="67,284,0,0" Height="73" Click="Button_Click" Grid.Column="2"/>
-            <TextBox x:Name="tType" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="204,220,0,0" Text="Salary:" FontFamily="Arial" Grid.Column="2"/>
-            <TextBox x:Name="tSalary" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="207,148,0,0" Text="Type:" FontFamily="Arial" Grid.Column="2"/>
-            <TextBox x:Name="tName_Copy" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" Margin="63,0,0,274" Text="Name:" FontFamily="Arial" TextChanged="TName_TextChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="tNumberID" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Margin="102,20,0,0" FontFamily="Arial" TextChanged="TName_TextChanged" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="tPhone" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Margin="102,137,0,0" FontFamily="Arial" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="tGender" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Margin="102,206,0,0" FontFamily="Arial" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="tCity" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="102,284,0,0" FontFamily="Arial" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="tStreet" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="204,13,0,0" FontFamily="Arial" Grid.Column="2"/>
+            <TextBox x:Name="tNumberHouse" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="208,81,0,0" FontFamily="Arial" Grid.Column="2"/>
+            <Button  x:Name="tButton" Content="submit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="184" Margin="119,284,0,0" Height="73" Click="Button_Click" Grid.Column="2"/>
+            <TextBox x:Name="tType" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="204,220,0,0" FontFamily="Arial" Grid.Column="2"/>
+            <TextBox x:Name="tSalary" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="207,148,0,0" FontFamily="Arial" Grid.Column="2"/>
+            <TextBox x:Name="tName_Copy" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="89" Margin="96,0,0,262" FontFamily="Arial" TextChanged="TName_TextChanged" Grid.ColumnSpan="3"/>
+            <Label Content="Number-Id:" HorizontalAlignment="Left" Height="39" Margin="10,20,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47"/>
+            <Label Content="Name:" HorizontalAlignment="Left" Height="39" Margin="10,69,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47"/>
+            <Label Content="Phone:" HorizontalAlignment="Left" Height="39" Margin="10,123,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47"/>
+            <Label Content="Gender:" HorizontalAlignment="Left" Height="39" Margin="10,188,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47"/>
+            <Label Content="City:" HorizontalAlignment="Left" Height="39" Margin="10,266,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47"/>
+            <Label Content="Street:" HorizontalAlignment="Left" Height="39" Margin="82,10,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47" Grid.Column="2"/>
+            <Label Content="number house:" HorizontalAlignment="Left" Height="39" Margin="67,82,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.804,0.47" Grid.Column="2"/>
+            <Label Content="Type:" HorizontalAlignment="Left" Height="39" Margin="82,148,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47" Grid.Column="2"/>
+            <Label Content="Salary:" HorizontalAlignment="Left" Height="39" Margin="82,220,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.804,0.47" Grid.Column="2"/>
 
         </Grid>
 
