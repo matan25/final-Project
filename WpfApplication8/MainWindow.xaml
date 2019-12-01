@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600">
     <Grid Margin="0,0,5,8">
-        <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="23,42,0,0" VerticalAlignment="Top" Width="377" IsReadOnly="True"/>
+        <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="24,79,0,0" VerticalAlignment="Top" Width="377" IsReadOnly="True"/>
         <Button Content="Add Worker" HorizontalAlignment="Left" Height="77" Margin="421,95,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click"/>
         <Button Content="Delete Worker" HorizontalAlignment="Left" Height="77" Margin="421,204,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click_1"/>
 
