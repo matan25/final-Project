@@ -20,8 +20,8 @@ namespace WpfApplication8
     /// </summary>
     public partial class MainWindow : Window
     {
-        private EmployeeController employeeController = new EmployeeController();
-        private Database1Entities db1 = new Database1Entities();
+        private EmployeeControlerr employeeController = new EmployeeControlerr();
+        private Database1Entities1 db1 = new Database1Entities1();
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +39,12 @@ namespace WpfApplication8
             DeleteWorker dw = new WpfApplication8.DeleteWorker(db1);
             dw.ShowDialog();
             employeeDataGrid.ItemsSource = db1.employee.ToList();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           ClientsServiece cs = new WpfApplication8.ClientsServiece();
+            cs.ShowDialog();
         }
     }
 }

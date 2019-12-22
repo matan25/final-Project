@@ -19,9 +19,9 @@ namespace WpfApplication8
     /// </summary>
     public partial class AddWorker : Window
     {
-        private Database1Entities db1 = new Database1Entities();
+        private Database1Entities1 db1 = new Database1Entities1();
         private DataGrid employeeDataGrid;
-        public AddWorker(DataGrid employeeDataGrid, Database1Entities db)
+        public AddWorker(DataGrid employeeDataGrid, Database1Entities1 db)
         {
             this.employeeDataGrid = employeeDataGrid;
             this.db1 = db;

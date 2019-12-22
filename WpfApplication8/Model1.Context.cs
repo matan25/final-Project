@@ -13,10 +13,10 @@ namespace WpfApplication8
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities : DbContext
+    public partial class Database1Entities1 : DbContext
     {
-        public Database1Entities()
-            : base("name=Database1Entities")
+        public Database1Entities1()
+            : base("name=Database1Entities1")
         {
         }
     
@@ -25,8 +25,11 @@ namespace WpfApplication8
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<employee> employee { get; set; }
         public virtual DbSet<employee_type> employee_type { get; set; }
+        public virtual DbSet<Order_Details> Order_Details { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<postal_code> postal_code { get; set; }
     }
 }

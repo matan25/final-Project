@@ -19,9 +19,9 @@ namespace WpfApplication8
     /// </summary>
     public partial class DeleteWorker : Window
     {
-        private Database1Entities db = new Database1Entities();
+        private Database1Entities1 db = new Database1Entities1();
         private employee deleteWorker;
-        public DeleteWorker(Database1Entities db1)
+        public DeleteWorker(Database1Entities1 db1)
         {
             InitializeComponent();
             employeeDeleteGrid.ItemsSource = db1.employee.ToList();

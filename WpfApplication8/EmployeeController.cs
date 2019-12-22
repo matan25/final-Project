@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace WpfApplication8
 {
-    class EmployeeController
-    {
-        private Model model = new Model();
-
-        public List<employee> GetEmployees()
+        class EmployeeControlerr
         {
-            return model.GetEmployees();
+            private Model model = new Model();
+
+            public List<employee> GetEmployees()
+            {
+                return model.GetEmployees();
+            }
         }
-    }
 }

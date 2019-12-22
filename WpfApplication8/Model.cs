@@ -8,7 +8,7 @@ namespace WpfApplication8
 {
     class Model
     {
-        private Database1Entities db = new Database1Entities();
+        private Database1Entities1 db = new Database1Entities1();
         public List<employee> GetEmployees()
         {
             return db.employee.ToList();
