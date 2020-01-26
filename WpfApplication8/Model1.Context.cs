@@ -28,8 +28,11 @@ namespace WpfApplication8
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<employee> employee { get; set; }
         public virtual DbSet<employee_type> employee_type { get; set; }
+        public virtual DbSet<Machines> Machines { get; set; }
         public virtual DbSet<Order_Details> Order_Details { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<postal_code> postal_code { get; set; }
+        public virtual DbSet<Table> Table { get; set; }
+        public virtual DbSet<Work_Shifts> Work_Shifts { get; set; }
     }
 }
