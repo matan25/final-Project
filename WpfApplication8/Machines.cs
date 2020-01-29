@@ -17,7 +17,7 @@ namespace WpfApplication8
         public int Id { get; set; }
         public string kind { get; set; }
         public string manufacture { get; set; }
-        public int occupation_depatment { get; set; }
+        public int work_shifts_id { get; set; }
     
         public virtual Work_Shifts Work_Shifts { get; set; }
     }

@@ -38,6 +38,17 @@
           <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="salary" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Expends">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="electrical_power" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="water_expend" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="workers_bonuses" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="expends_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Machines">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,7 +56,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="kind" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="manufacture" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="occupation depatment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="work_shifts_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Order Details">
           <Key>
@@ -66,7 +77,8 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Customer Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Company Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Order Details" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order details_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="postal_code">
           <Key>
@@ -77,11 +89,14 @@
           <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="house_number" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Table">
+        <EntityType Name="Total_Expends">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="constant_expends" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bonuses_expends" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="expends_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Work_Shifts">
           <Key>
@@ -119,7 +134,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Machines_occupation depatment">
+        <Association Name="FK_Expends_Total_Expends">
+          <End Role="Total_Expends" Type="Self.Total_Expends" Multiplicity="1" />
+          <End Role="Expends" Type="Self.Expends" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Expends">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Expends">
+              <PropertyRef Name="expends_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machines_Work_Shifts">
           <End Role="Work_Shifts" Type="Self.Work_Shifts" Multiplicity="1" />
           <End Role="Machines" Type="Self.Machines" Multiplicity="*" />
           <ReferentialConstraint>
@@ -127,7 +154,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Machines">
-              <PropertyRef Name="occupation depatment" />
+              <PropertyRef Name="work_shifts_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="client_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -139,7 +178,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
-              <PropertyRef Name="Order Details" />
+              <PropertyRef Name="order details_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -147,11 +186,12 @@
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee_type" EntityType="Self.employee_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expends" EntityType="Self.Expends" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Machines" EntityType="Self.Machines" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order Details" EntityType="Self.Order Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="postal_code" EntityType="Self.postal_code" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Total_Expends" EntityType="Self.Total_Expends" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work_Shifts" EntityType="Self.Work_Shifts" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_employee_employee_type" Association="Self.FK_employee_employee_type">
             <End Role="employee_type" EntitySet="employee_type" />
@@ -161,9 +201,17 @@
             <End Role="postal_code" EntitySet="postal_code" />
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Machines_occupation depatment" Association="Self.FK_Machines_occupation depatment">
+          <AssociationSet Name="FK_Expends_Total_Expends" Association="Self.FK_Expends_Total_Expends">
+            <End Role="Total_Expends" EntitySet="Total_Expends" />
+            <End Role="Expends" EntitySet="Expends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machines_Work_Shifts" Association="Self.FK_Machines_Work_Shifts">
             <End Role="Work_Shifts" EntitySet="Work_Shifts" />
             <End Role="Machines" EntitySet="Machines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Clients" Association="Self.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Order Details" Association="Self.FK_Orders_Order Details">
             <End Role="Order Details" EntitySet="Order Details" />
@@ -178,12 +226,17 @@
           <EntitySet Name="Clients" EntityType="Database1Model.Clients" />
           <EntitySet Name="employee" EntityType="Database1Model.employee" />
           <EntitySet Name="employee_type" EntityType="Database1Model.employee_type" />
+          <EntitySet Name="Expends" EntityType="Database1Model.Expends" />
           <EntitySet Name="Machines" EntityType="Database1Model.Machines" />
           <EntitySet Name="Order_Details" EntityType="Database1Model.Order_Details" />
           <EntitySet Name="Orders" EntityType="Database1Model.Orders" />
           <EntitySet Name="postal_code" EntityType="Database1Model.postal_code" />
-          <EntitySet Name="Table" EntityType="Database1Model.Table" />
+          <EntitySet Name="Total_Expends" EntityType="Database1Model.Total_Expends" />
           <EntitySet Name="Work_Shifts" EntityType="Database1Model.Work_Shifts" />
+          <AssociationSet Name="FK_Orders_Clients" Association="Database1Model.FK_Orders_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_employee_employee_type" Association="Database1Model.FK_employee_employee_type">
             <End Role="employee_type" EntitySet="employee_type" />
             <End Role="employee" EntitySet="employee" />
@@ -192,7 +245,11 @@
             <End Role="postal_code" EntitySet="postal_code" />
             <End Role="employee" EntitySet="employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Machines_occupation_depatment" Association="Database1Model.FK_Machines_occupation_depatment">
+          <AssociationSet Name="FK_Expends_Total_Expends" Association="Database1Model.FK_Expends_Total_Expends">
+            <End Role="Total_Expends" EntitySet="Total_Expends" />
+            <End Role="Expends" EntitySet="Expends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Machines_Work_Shifts" Association="Database1Model.FK_Machines_Work_Shifts">
             <End Role="Work_Shifts" EntitySet="Work_Shifts" />
             <End Role="Machines" EntitySet="Machines" />
           </AssociationSet>
@@ -212,6 +269,7 @@
           <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Buissnes_Priority" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Note" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Database1Model.FK_Orders_Clients" FromRole="Clients" ToRole="Orders" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -237,6 +295,18 @@
           <Property Name="salary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="employee" Relationship="Database1Model.FK_employee_employee_type" FromRole="employee_type" ToRole="employee" />
         </EntityType>
+        <EntityType Name="Expends">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="electrical_power" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="water_expend" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="workers_bonuses" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="expends_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Total_Expends" Relationship="Database1Model.FK_Expends_Total_Expends" FromRole="Expends" ToRole="Total_Expends" />
+        </EntityType>
         <EntityType Name="Machines">
           <Key>
             <PropertyRef Name="Id" />
@@ -244,8 +314,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="kind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="manufacture" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="occupation_depatment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Work_Shifts" Relationship="Database1Model.FK_Machines_occupation_depatment" FromRole="Machines" ToRole="Work_Shifts" />
+          <Property Name="work_shifts_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Work_Shifts" Relationship="Database1Model.FK_Machines_Work_Shifts" FromRole="Machines" ToRole="Work_Shifts" />
         </EntityType>
         <EntityType Name="Order_Details">
           <Key>
@@ -267,8 +337,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Customer_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Company_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Order_Details" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Order_Details1" Relationship="Database1Model.FK_Orders_Order_Details" FromRole="Orders" ToRole="Order_Details" />
+          <Property Name="order_details_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Database1Model.FK_Orders_Clients" FromRole="Orders" ToRole="Clients" />
+          <NavigationProperty Name="Order_Details" Relationship="Database1Model.FK_Orders_Order_Details" FromRole="Orders" ToRole="Order_Details" />
         </EntityType>
         <EntityType Name="postal_code">
           <Key>
@@ -280,11 +352,15 @@
           <Property Name="house_number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="employee" Relationship="Database1Model.FK_employee_postal_code" FromRole="postal_code" ToRole="employee" />
         </EntityType>
-        <EntityType Name="Table">
+        <EntityType Name="Total_Expends">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="constant_expends" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bonuses_expends" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="expends_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Expends" Relationship="Database1Model.FK_Expends_Total_Expends" FromRole="Total_Expends" ToRole="Expends" />
         </EntityType>
         <EntityType Name="Work_Shifts">
           <Key>
@@ -297,8 +373,20 @@
           <Property Name="workers_amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="shift_manager" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="notes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Machines" Relationship="Database1Model.FK_Machines_occupation_depatment" FromRole="Work_Shifts" ToRole="Machines" />
+          <NavigationProperty Name="Machines" Relationship="Database1Model.FK_Machines_Work_Shifts" FromRole="Work_Shifts" ToRole="Machines" />
         </EntityType>
+        <Association Name="FK_Orders_Clients">
+          <End Type="Database1Model.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="Database1Model.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_employee_employee_type">
           <End Type="Database1Model.employee_type" Role="employee_type" Multiplicity="1" />
           <End Type="Database1Model.employee" Role="employee" Multiplicity="*" />
@@ -323,7 +411,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Machines_occupation_depatment">
+        <Association Name="FK_Expends_Total_Expends">
+          <End Type="Database1Model.Total_Expends" Role="Total_Expends" Multiplicity="1" />
+          <End Type="Database1Model.Expends" Role="Expends" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Total_Expends">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Expends">
+              <PropertyRef Name="expends_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Machines_Work_Shifts">
           <End Type="Database1Model.Work_Shifts" Role="Work_Shifts" Multiplicity="1" />
           <End Type="Database1Model.Machines" Role="Machines" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,7 +431,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Machines">
-              <PropertyRef Name="occupation_depatment" />
+              <PropertyRef Name="work_shifts_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,11 +443,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Orders">
-              <PropertyRef Name="Order_Details" />
+              <PropertyRef Name="order_details_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -389,10 +489,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Expends">
+            <EntityTypeMapping TypeName="Database1Model.Expends">
+              <MappingFragment StoreEntitySet="Expends">
+                <ScalarProperty Name="expends_id" ColumnName="expends_id" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="workers_bonuses" ColumnName="workers_bonuses" />
+                <ScalarProperty Name="water_expend" ColumnName="water_expend" />
+                <ScalarProperty Name="electrical_power" ColumnName="electrical_power" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Machines">
             <EntityTypeMapping TypeName="Database1Model.Machines">
               <MappingFragment StoreEntitySet="Machines">
-                <ScalarProperty Name="occupation_depatment" ColumnName="occupation depatment" />
+                <ScalarProperty Name="work_shifts_id" ColumnName="work_shifts_id" />
                 <ScalarProperty Name="manufacture" ColumnName="manufacture" />
                 <ScalarProperty Name="kind" ColumnName="kind" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -415,7 +527,8 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Database1Model.Orders">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="Order_Details" ColumnName="Order Details" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="order_details_id" ColumnName="order details_id" />
                 <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
                 <ScalarProperty Name="Customer_Name" ColumnName="Customer Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -432,9 +545,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="Database1Model.Table">
-              <MappingFragment StoreEntitySet="Table">
+          <EntitySetMapping Name="Total_Expends">
+            <EntityTypeMapping TypeName="Database1Model.Total_Expends">
+              <MappingFragment StoreEntitySet="Total_Expends">
+                <ScalarProperty Name="expends_id" ColumnName="expends_id" />
+                <ScalarProperty Name="bonuses_expends" ColumnName="bonuses_expends" />
+                <ScalarProperty Name="constant_expends" ColumnName="constant_expends" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -12,23 +12,20 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class Total_Expends
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
+        public Total_Expends()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Expends = new HashSet<Expends>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Company { get; set; }
-        public string Factory_occupation { get; set; }
-        public string Country { get; set; }
-        public string Buissnes_Priority { get; set; }
-        public string Note { get; set; }
+        public string constant_expends { get; set; }
+        public string bonuses_expends { get; set; }
+        public int expends_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Expends> Expends { get; set; }
     }
 }
