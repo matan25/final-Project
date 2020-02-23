@@ -91,6 +91,9 @@
     <Compile Include="ClientsServiece.xaml.cs">
       <DependentUpon>ClientsServiece.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DeleteWorker.xaml.cs">
       <DependentUpon>DeleteWorker.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Expends.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factory_Occupation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Machines.cs">
@@ -132,6 +138,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="postal_code.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Total_Expends.cs">

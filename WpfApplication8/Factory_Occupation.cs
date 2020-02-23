@@ -12,13 +12,18 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Factory_Occupation
     {
-        public int Id { get; set; }
-        public int order_details_id { get; set; }
-        public int client_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Factory_Occupation()
+        {
+            this.Clients = new HashSet<Clients>();
+        }
     
-        public virtual Clients Clients { get; set; }
-        public virtual Order_Details Order_Details { get; set; }
+        public int Id { get; set; }
+        public string factory_occupation_name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

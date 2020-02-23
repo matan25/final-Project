@@ -12,13 +12,8 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Table
     {
         public int Id { get; set; }
-        public int order_details_id { get; set; }
-        public int client_id { get; set; }
-    
-        public virtual Clients Clients { get; set; }
-        public virtual Order_Details Order_Details { get; set; }
     }
 }

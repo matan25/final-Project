@@ -14,13 +14,20 @@ namespace WpfApplication8
     
     public partial class Expends
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Expends()
+        {
+            this.Total_Expends = new HashSet<Total_Expends>();
+        }
+    
         public int Id { get; set; }
         public string electrical_power { get; set; }
         public string water_expend { get; set; }
         public string workers_bonuses { get; set; }
-        public string note { get; set; }
-        public int expends_id { get; set; }
+        public string constant_expends { get; set; }
+        public string buissness_expends { get; set; }
     
-        public virtual Total_Expends Total_Expends { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Total_Expends> Total_Expends { get; set; }
     }
 }

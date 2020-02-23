@@ -22,12 +22,14 @@ namespace WpfApplication8
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Company { get; set; }
-        public string Factory_occupation { get; set; }
+        public int company_id { get; set; }
+        public int factory_occupation_id { get; set; }
         public string Country { get; set; }
         public string Buissnes_Priority { get; set; }
         public string Note { get; set; }
     
+        public virtual Company Company { get; set; }
+        public virtual Factory_Occupation Factory_Occupation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
     }
