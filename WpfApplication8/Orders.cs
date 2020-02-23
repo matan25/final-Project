@@ -17,8 +17,10 @@ namespace WpfApplication8
         public int Id { get; set; }
         public int order_details_id { get; set; }
         public int client_id { get; set; }
+        public int employee_id { get; set; }
     
         public virtual Clients Clients { get; set; }
+        public virtual employee employee { get; set; }
         public virtual Order_Details Order_Details { get; set; }
     }
 }

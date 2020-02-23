@@ -14,6 +14,13 @@ namespace WpfApplication8
     
     public partial class employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public employee()
+        {
+            this.Orders = new HashSet<Orders>();
+            this.Report_Expends = new HashSet<Report_Expends>();
+        }
+    
         public int Id { get; set; }
         public string id_number { get; set; }
         public string name { get; set; }
@@ -25,5 +32,9 @@ namespace WpfApplication8
     
         public virtual employee_type employee_type { get; set; }
         public virtual postal_code postal_code1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report_Expends> Report_Expends { get; set; }
     }
 }

@@ -12,22 +12,18 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Expends
+    public partial class Expends_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Expends()
+        public Expends_Type()
         {
-            this.Total_Expends = new HashSet<Total_Expends>();
+            this.Report_Expends = new HashSet<Report_Expends>();
         }
     
         public int Id { get; set; }
-        public string electrical_power { get; set; }
-        public string water_expend { get; set; }
-        public string workers_bonuses { get; set; }
-        public string constant_expends { get; set; }
-        public string buissness_expends { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Total_Expends> Total_Expends { get; set; }
+        public virtual ICollection<Report_Expends> Report_Expends { get; set; }
     }
 }
