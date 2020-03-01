@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
+        Title="MainWindow" Height="600" Width="700">
     <Grid Margin="0,0,5,8">
-        <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="24,79,0,0" VerticalAlignment="Top" Width="377" IsReadOnly="True"/>
-        <Button Content="Add Worker" HorizontalAlignment="Left" Height="77" Margin="421,54,0,0" VerticalAlignment="Top" Width="150" Click="Button_Click"/>
-        <Button Content="Delete Worker" HorizontalAlignment="Left" Height="77" Margin="419,163,0,0" VerticalAlignment="Top" Width="137" Click="Button_Click_1"/>
-        <Button Content="Clients Service" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="413,271,0,0" Height="72" Click="Button_Click_2"/>
+        <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="24,79,0,0" VerticalAlignment="Top" Width="650" IsReadOnly="True"/>
+        <Button Content="Add Worker" HorizontalAlignment="Left" Height="89" Margin="-10,404,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click"/>
+        <Button Content="Delete Worker" HorizontalAlignment="Left" Height="98" Margin="181,406,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1"/>
+        <Button Content="Update Worker" HorizontalAlignment="Left" Height="86" Margin="378,408,0,0" VerticalAlignment="Top" Width="172" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

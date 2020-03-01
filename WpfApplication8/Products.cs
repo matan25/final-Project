@@ -12,22 +12,20 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Work_Shifts
+    public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Work_Shifts()
+        public Products()
         {
-            this.Machines = new HashSet<Machines>();
+            this.Order_Details = new HashSet<Order_Details>();
         }
     
         public int Id { get; set; }
-        public string @class { get; set; }
-        public System.DateTime workind_date { get; set; }
-        public string workers_amount { get; set; }
-        public string shift_manager { get; set; }
-        public string notes { get; set; }
+        public string name { get; set; }
+        public string price { get; set; }
+        public int deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Machines> Machines { get; set; }
+        public virtual ICollection<Order_Details> Order_Details { get; set; }
     }
 }

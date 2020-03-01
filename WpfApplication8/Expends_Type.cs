@@ -17,13 +17,13 @@ namespace WpfApplication8
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Expends_Type()
         {
-            this.Report_Expends = new HashSet<Report_Expends>();
+            this.Expends_Report = new HashSet<Expends_Report>();
         }
     
         public int Id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report_Expends> Report_Expends { get; set; }
+        public virtual ICollection<Expends_Report> Expends_Report { get; set; }
     }
 }

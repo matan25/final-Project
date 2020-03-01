@@ -14,21 +14,16 @@ namespace WpfApplication8
     
     public partial class Order_Details
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order_Details()
-        {
-            this.Orders = new HashSet<Orders>();
-        }
-    
         public int Id { get; set; }
         public string Order_Date { get; set; }
         public string Delivery_Date { get; set; }
         public string Machine_Kind { get; set; }
-        public string Production_Quantity { get; set; }
-        public string Transaction_Price { get; set; }
+        public string production_amount { get; set; }
+        public int products_id { get; set; }
         public string Note { get; set; }
+        public int orders_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual Orders Orders { get; set; }
+        public virtual Products Products { get; set; }
     }
 }

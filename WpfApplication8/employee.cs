@@ -17,8 +17,8 @@ namespace WpfApplication8
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public employee()
         {
+            this.Expends_Report = new HashSet<Expends_Report>();
             this.Orders = new HashSet<Orders>();
-            this.Report_Expends = new HashSet<Report_Expends>();
         }
     
         public int Id { get; set; }
@@ -27,14 +27,14 @@ namespace WpfApplication8
         public string phone { get; set; }
         public string gender { get; set; }
         public int employee_type_id { get; set; }
-        public int Postal_code { get; set; }
+        public int postal_code_id { get; set; }
         public Nullable<int> deleted { get; set; }
     
         public virtual employee_type employee_type { get; set; }
-        public virtual postal_code postal_code1 { get; set; }
+        public virtual Postal_Code_Worker Postal_Code_Worker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Expends_Report> Expends_Report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report_Expends> Report_Expends { get; set; }
     }
 }

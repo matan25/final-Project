@@ -12,17 +12,17 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class postal_code
+    public partial class Postal_Code_Worker
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public postal_code()
+        public Postal_Code_Worker()
         {
             this.employee = new HashSet<employee>();
         }
     
         public int Id { get; set; }
-        public string city { get; set; }
         public string street { get; set; }
+        public string city { get; set; }
         public string house_number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

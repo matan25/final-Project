@@ -14,6 +14,12 @@ namespace WpfApplication8
     
     public partial class Orders
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Orders()
+        {
+            this.Order_Details = new HashSet<Order_Details>();
+        }
+    
         public int Id { get; set; }
         public int order_details_id { get; set; }
         public int client_id { get; set; }
@@ -21,6 +27,7 @@ namespace WpfApplication8
     
         public virtual Clients Clients { get; set; }
         public virtual employee employee { get; set; }
-        public virtual Order_Details Order_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Details> Order_Details { get; set; }
     }
 }

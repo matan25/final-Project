@@ -29,14 +29,14 @@ namespace WpfApplication8
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<employee> employee { get; set; }
         public virtual DbSet<employee_type> employee_type { get; set; }
+        public virtual DbSet<Expends_Report> Expends_Report { get; set; }
         public virtual DbSet<Expends_Type> Expends_Type { get; set; }
         public virtual DbSet<Factory_Occupation> Factory_Occupation { get; set; }
         public virtual DbSet<Machines> Machines { get; set; }
         public virtual DbSet<Order_Details> Order_Details { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<postal_code> postal_code { get; set; }
-        public virtual DbSet<Report_Expends> Report_Expends { get; set; }
-        public virtual DbSet<Table> Table { get; set; }
+        public virtual DbSet<Postal_Code_Worker> Postal_Code_Worker { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Work_Shifts> Work_Shifts { get; set; }
     }
 }

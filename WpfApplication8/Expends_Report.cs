@@ -12,8 +12,16 @@ namespace WpfApplication8
     using System;
     using System.Collections.Generic;
     
-    public partial class Table
+    public partial class Expends_Report
     {
         public int Id { get; set; }
+        public int expends_type_id { get; set; }
+        public string note { get; set; }
+        public string date { get; set; }
+        public int value { get; set; }
+        public int employee_id { get; set; }
+    
+        public virtual employee employee { get; set; }
+        public virtual Expends_Type Expends_Type { get; set; }
     }
 }
