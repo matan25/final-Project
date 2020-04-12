@@ -22,7 +22,6 @@ namespace WpfApplication8
         private Database1Entities1 db = new Database1Entities1();
         private DataGrid d = new DataGrid();
         private DataGrid d2 = new DataGrid();
-        private employee deleteworker;
         public DeleteWorker(Database1Entities1 db1, DataGrid dg)
         {
             this.db = db1;

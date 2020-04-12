@@ -8,9 +8,9 @@
         Title="MainWindow" Height="600" Width="700">
     <Grid Margin="0,0,5,8">
         <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="24,79,0,0" VerticalAlignment="Top" Width="650" IsReadOnly="True"/>
-        <Button Content="Add Worker" HorizontalAlignment="Left" Height="89" Margin="-10,404,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click"/>
-        <Button Content="Delete Worker" HorizontalAlignment="Left" Height="98" Margin="181,406,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1"/>
-        <Button Content="Update Worker" HorizontalAlignment="Left" Height="86" Margin="378,408,0,0" VerticalAlignment="Top" Width="172" Click="Button_Click_3"/>
+        <Button Content="Add Worker" HorizontalAlignment="Left" Height="89" Margin="57,418,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click"/>
+        <Button Content="Delete Worker" HorizontalAlignment="Left" Height="98" Margin="257,418,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1"/>
+        <Button Content="Update Worker" HorizontalAlignment="Left" Height="98" Margin="453,418,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_3"/>
 
     </Grid>
 </Window>
