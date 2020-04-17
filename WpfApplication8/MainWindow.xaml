@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:WpfApplication8"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="700">
-    <Grid Margin="0,0,5,8">
-        <DataGrid x:Name="employeeDataGrid" HorizontalAlignment="Left" Height="240" Margin="24,79,0,0" VerticalAlignment="Top" Width="650" IsReadOnly="True"/>
-        <Button Content="Add Worker" HorizontalAlignment="Left" Height="89" Margin="57,418,0,0" VerticalAlignment="Top" Width="169" Click="Button_Click"/>
-        <Button Content="Delete Worker" HorizontalAlignment="Left" Height="98" Margin="257,418,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click_1"/>
-        <Button Content="Update Worker" HorizontalAlignment="Left" Height="98" Margin="453,418,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_3"/>
-
+    <Grid Margin="0,0,5,8" Background="#FFCD400B">
+        <Button Content="Employee System" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="151,195,0,0" Height="83" RenderTransformOrigin="0.49,0.174" FontSize="20" Click="Button_Click"/>
+        <Label Content="SHALON - Chemical industries" HorizontalAlignment="Left" Margin="78,31,0,0" VerticalAlignment="Top" Height="131" Width="571" FontFamily="Showcard Gothic" FontSize="36"/>
+        <Button Content="Consumer Service" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="433,196,0,0" Height="83" FontSize="20"/>
+        <Button Content="Managment" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="154,359,0,0" Height="83" FontSize="20"/>
+        <Button Content="Operating System" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="431,361,0,0" Height="83" FontSize="20"/>
     </Grid>
 </Window>

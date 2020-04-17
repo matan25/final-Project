@@ -37,6 +37,9 @@ namespace WpfApplication8
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Postal_Code_Worker> Postal_Code_Worker { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Provided_Product> Provided_Product { get; set; }
+        public virtual DbSet<Provider_Details> Provider_Details { get; set; }
+        public virtual DbSet<Provider_Name> Provider_Name { get; set; }
         public virtual DbSet<Work_Shifts> Work_Shifts { get; set; }
     }
 }

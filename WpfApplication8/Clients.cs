@@ -21,7 +21,6 @@ namespace WpfApplication8
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
         public int company_id { get; set; }
         public int factory_occupation_id { get; set; }
         public string Country { get; set; }

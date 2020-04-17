@@ -10,7 +10,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="company_id" Type="int" Nullable="false" />
           <Property Name="factory_occupation_id" Type="int" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -118,6 +117,33 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provided_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provider_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantity_items" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="providing_date" Type="datetime" Nullable="false" />
+          <Property Name="provided_product_id" Type="int" Nullable="false" />
+          <Property Name="provider_name_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provider_Name">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Work_Shifts">
           <Key>
@@ -262,6 +288,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Provider_Details_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="Provider_Details" Type="Self.Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provider_Details_Provided_Product">
+          <End Role="Provided_Product" Type="Self.Provided_Product" Multiplicity="1" />
+          <End Role="Provider_Details" Type="Self.Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provided_Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="provided_product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provider_Details_Provider_Name">
+          <End Role="Provider_Name" Type="Self.Provider_Name" Multiplicity="1" />
+          <End Role="Provider_Details" Type="Self.Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider_Name">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="provider_name_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
@@ -275,6 +337,9 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Postal_Code_Worker" EntityType="Self.Postal_Code_Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provided_Product" EntityType="Self.Provided_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider_Details" EntityType="Self.Provider_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider_Name" EntityType="Self.Provider_Name" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work_Shifts" EntityType="Self.Work_Shifts" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Clients_Company" Association="Self.FK_Clients_Company">
             <End Role="Company" EntitySet="Company" />
@@ -320,6 +385,18 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Order Details" EntitySet="Order Details" />
           </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_employee" Association="Self.FK_Provider_Details_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_Provided_Product" Association="Self.FK_Provider_Details_Provided_Product">
+            <End Role="Provided_Product" EntitySet="Provided_Product" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_Provider_Name" Association="Self.FK_Provider_Details_Provider_Name">
+            <End Role="Provider_Name" EntitySet="Provider_Name" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -338,6 +415,9 @@
           <EntitySet Name="Orders" EntityType="Database1Model.Orders" />
           <EntitySet Name="Postal_Code_Worker" EntityType="Database1Model.Postal_Code_Worker" />
           <EntitySet Name="Products" EntityType="Database1Model.Products" />
+          <EntitySet Name="Provided_Product" EntityType="Database1Model.Provided_Product" />
+          <EntitySet Name="Provider_Details" EntityType="Database1Model.Provider_Details" />
+          <EntitySet Name="Provider_Name" EntityType="Database1Model.Provider_Name" />
           <EntitySet Name="Work_Shifts" EntityType="Database1Model.Work_Shifts" />
           <AssociationSet Name="FK_Clients_Company" Association="Database1Model.FK_Clients_Company">
             <End Role="Company" EntitySet="Company" />
@@ -367,6 +447,10 @@
             <End Role="employee" EntitySet="employee" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_employee" Association="Database1Model.FK_Provider_Details_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
           <AssociationSet Name="FK_Expends_Report_Expends_Type" Association="Database1Model.FK_Expends_Report_Expends_Type">
             <End Role="Expends_Type" EntitySet="Expends_Type" />
             <End Role="Expends_Report" EntitySet="Expends_Report" />
@@ -383,13 +467,20 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Order_Details" EntitySet="Order_Details" />
           </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_Provided_Product" Association="Database1Model.FK_Provider_Details_Provided_Product">
+            <End Role="Provided_Product" EntitySet="Provided_Product" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provider_Details_Provider_Name" Association="Database1Model.FK_Provider_Details_Provider_Name">
+            <End Role="Provider_Name" EntitySet="Provider_Name" />
+            <End Role="Provider_Details" EntitySet="Provider_Details" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="company_id" Type="Int32" Nullable="false" />
           <Property Name="factory_occupation_id" Type="Int32" Nullable="false" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -423,6 +514,7 @@
           <NavigationProperty Name="Postal_Code_Worker" Relationship="Database1Model.FK_employee_Postal_Code_Worker" FromRole="employee" ToRole="Postal_Code_Worker" />
           <NavigationProperty Name="Expends_Report" Relationship="Database1Model.FK_Expends_Report_employee" FromRole="employee" ToRole="Expends_Report" />
           <NavigationProperty Name="Orders" Relationship="Database1Model.FK_Orders_employee" FromRole="employee" ToRole="Orders" />
+          <NavigationProperty Name="Provider_Details" Relationship="Database1Model.FK_Provider_Details_employee" FromRole="employee" ToRole="Provider_Details" />
         </EntityType>
         <EntityType Name="employee_type">
           <Key>
@@ -518,6 +610,38 @@
           <Property Name="price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order_Details" Relationship="Database1Model.FK_Orders_Products" FromRole="Products" ToRole="Order_Details" />
+        </EntityType>
+        <EntityType Name="Provided_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provider_Details" Relationship="Database1Model.FK_Provider_Details_Provided_Product" FromRole="Provided_Product" ToRole="Provider_Details" />
+        </EntityType>
+        <EntityType Name="Provider_Details">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantity_items" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="providing_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="provided_product_id" Type="Int32" Nullable="false" />
+          <Property Name="provider_name_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Database1Model.FK_Provider_Details_employee" FromRole="Provider_Details" ToRole="employee" />
+          <NavigationProperty Name="Provided_Product" Relationship="Database1Model.FK_Provider_Details_Provided_Product" FromRole="Provider_Details" ToRole="Provided_Product" />
+          <NavigationProperty Name="Provider_Name" Relationship="Database1Model.FK_Provider_Details_Provider_Name" FromRole="Provider_Details" ToRole="Provider_Name" />
+        </EntityType>
+        <EntityType Name="Provider_Name">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provider_Details" Relationship="Database1Model.FK_Provider_Details_Provider_Name" FromRole="Provider_Name" ToRole="Provider_Details" />
         </EntityType>
         <EntityType Name="Work_Shifts">
           <Key>
@@ -615,6 +739,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Provider_Details_employee">
+          <End Type="Database1Model.employee" Role="employee" Multiplicity="1" />
+          <End Type="Database1Model.Provider_Details" Role="Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Expends_Report_Expends_Type">
           <End Type="Database1Model.Expends_Type" Role="Expends_Type" Multiplicity="1" />
           <End Type="Database1Model.Expends_Report" Role="Expends_Report" Multiplicity="*" />
@@ -663,6 +799,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Provider_Details_Provided_Product">
+          <End Type="Database1Model.Provided_Product" Role="Provided_Product" Multiplicity="1" />
+          <End Type="Database1Model.Provider_Details" Role="Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provided_Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="provided_product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provider_Details_Provider_Name">
+          <End Type="Database1Model.Provider_Name" Role="Provider_Name" Multiplicity="1" />
+          <End Type="Database1Model.Provider_Details" Role="Provider_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider_Name">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Provider_Details">
+              <PropertyRef Name="provider_name_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -677,7 +837,6 @@
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="factory_occupation_id" ColumnName="factory_occupation_id" />
                 <ScalarProperty Name="company_id" ColumnName="company_id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -790,6 +949,36 @@
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="deleted" ColumnName="deleted" />
                 <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provided_Product">
+            <EntityTypeMapping TypeName="Database1Model.Provided_Product">
+              <MappingFragment StoreEntitySet="Provided_Product">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provider_Details">
+            <EntityTypeMapping TypeName="Database1Model.Provider_Details">
+              <MappingFragment StoreEntitySet="Provider_Details">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="provider_name_id" ColumnName="provider_name_id" />
+                <ScalarProperty Name="provided_product_id" ColumnName="provided_product_id" />
+                <ScalarProperty Name="providing_date" ColumnName="providing_date" />
+                <ScalarProperty Name="quantity_items" ColumnName="quantity_items" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provider_Name">
+            <EntityTypeMapping TypeName="Database1Model.Provider_Name">
+              <MappingFragment StoreEntitySet="Provider_Name">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

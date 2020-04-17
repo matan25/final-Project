@@ -19,6 +19,7 @@ namespace WpfApplication8
         {
             this.Expends_Report = new HashSet<Expends_Report>();
             this.Orders = new HashSet<Orders>();
+            this.Provider_Details = new HashSet<Provider_Details>();
         }
     
         public int Id { get; set; }
@@ -36,5 +37,7 @@ namespace WpfApplication8
         public virtual ICollection<Expends_Report> Expends_Report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Provider_Details> Provider_Details { get; set; }
     }
 }
